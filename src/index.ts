@@ -1,11 +1,9 @@
-import * as fs from 'fs';
 import * as _ from 'lodash';
-import * as appRootPath from 'app-root-path';
 
-let regions = [];
-let provinces = [];
-let municipalities = [];
-let baranggays = [];
+import { regions } from './regions';
+import { provinces } from './provinces';
+import { municipalities } from './combined-municipalities';
+import { baranggays } from './baranggays';
 
 interface SearchParams {
   name?: string;
@@ -17,7 +15,6 @@ interface SearchParams {
 
 export const searchRegion = async (params?: SearchParams) => {
   const name = _.get(params, 'name', '');
-  regions = await readJsonFile('regions');
   const filteredRegions = _.filter(regions, (region) => {
     let nameMatch = true;
     if (name) {
@@ -31,8 +28,6 @@ export const searchRegion = async (params?: SearchParams) => {
 export const searchProvince = async (params?: SearchParams) => {
   const name = _.get(params, 'name', '');
   const regionId = _.get(params, 'regionId', '');
-
-  provinces = await readJsonFile('provinces');
   const filteredProvinces = _.filter(provinces, (province) => {
     let nameMatch = true;
     if (name) {
@@ -52,7 +47,6 @@ export const searchProvince = async (params?: SearchParams) => {
 export const searchMunicipalities = async (params?: SearchParams) => {
   const name = _.get(params, 'name', '');
   const provinceId = _.get(params, 'provinceId', '');
-  municipalities = await readJsonFile('combined-municipalities');
   const filteredMunicipalities = _.filter(municipalities, (municipality) => {
     let nameMatch = true;
     if (name) {
@@ -70,7 +64,6 @@ export const searchMunicipalities = async (params?: SearchParams) => {
 export const searchBaranggays = async (params?: SearchParams) => {
   const name = _.get(params, 'name', '');
   const municipalityId = _.get(params, 'municipalityId', '');
-  baranggays = await readJsonFile('baranggays');
   const filteredBaranggays = _.filter(baranggays, (baranggay) => {
     let nameMatch = true;
     if (name) {
@@ -83,16 +76,4 @@ export const searchBaranggays = async (params?: SearchParams) => {
     return nameMatch && municipalityIdMatch;
   });
   return filteredBaranggays;
-};
-
-const readJsonFile = async (name: string) => {
-  try {
-    const data = await fs.readFileSync(
-      `${appRootPath}/data/${name}.json`,
-      'utf8'
-    );
-    return JSON.parse(data);
-  } catch (error) {
-    return null;
-  }
 };
