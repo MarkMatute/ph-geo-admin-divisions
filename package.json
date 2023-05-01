@@ -1,6 +1,6 @@
 {
     "name": "ph-geo-admin-divisions",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "focuses on the geographic and administrative divisions of the Philippines up to barranggay level",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
@@ -15,7 +15,8 @@
         "start": "npm run build && node build/index.js",
         "lint": "eslint . --ext .ts",
         "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
-        "test": "jest --testMatch **/lib/*.spec.js --coverage --verbose"
+        "test": "jest --testMatch **/lib/*.spec.js --coverage --verbose",
+        "release": "npm run build && npm publish"
     },
     "keywords": [
         "philippines geographic",
