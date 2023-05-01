@@ -1,0 +1,8 @@
+{
+    "watch": [
+        "src"
+    ],
+    "ext": ".ts,.js",
+    "ignore": [],
+    "exec": "tsc && node --inspect=0.0.0.0:9229 lib/index.js"
+}
