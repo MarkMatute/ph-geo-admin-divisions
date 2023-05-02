@@ -71,9 +71,10 @@ describe('PH Geo Admin Divisions Search Test', () => {
   describe('when searching baranggays', () => {
     it('should return baranggays under given municipality id', async () => {
       const allBaranggays =  searchBaranggay({
+        provinceId: '014',
         municipalityId: '10'
       });
-      expect((allBaranggays as any).length).toEqual(1603);
+      expect((allBaranggays as any).length).toEqual(51);
     });
     it('should return baranggays when searched using name', async () => {
       const allBalayong =  searchBaranggay({
