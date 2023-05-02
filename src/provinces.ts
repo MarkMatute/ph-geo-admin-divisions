@@ -1,4 +1,17 @@
+/**
+ * Metro Manila / NCR
+ * is manually added as a province
+ */
 export const provinces = [
+   {
+    "psgcId": "1300000000",
+    "name": "National Capital Region (NCR)",
+    "geoLevel": "Reg",
+    "regionId": "13",
+    "provinceId": "000",
+    "municipalityId": "00",
+    "baranggayId": "000"
+  },
   {
     "psgcId": "0102800000",
     "name": "Ilocos Norte",
