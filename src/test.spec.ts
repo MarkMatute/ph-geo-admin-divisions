@@ -90,4 +90,28 @@ describe('PH Geo Admin Divisions Search Test', () => {
       expect((balayong as any).length).toEqual(1);
     });
   });
+
+  describe('searching ncr in province', () => {
+    it('should return ncr in province list', async () => {
+      const ncr =  searchProvince({
+        name: 'NCR'
+      })
+      console.log(ncr);
+      expect(ncr[0].name).toEqual('National Capital Region (NCR)');
+    });
+    it('should return municipalities under ncr', async () => {
+      const ncrMunicipalities =  searchMunicipality({
+        provinceId: '000'
+      });
+      expect(ncrMunicipalities.length).toEqual(31);
+    });
+    it('should return baranggay under ncr', async () => {
+      const ermitaBaranggay =  searchBaranggay({
+        provinceId: '000',
+        municipalityId: '08'
+      });
+      expect(ermitaBaranggay.length).toEqual(13);
+    });
+  });
+
 });

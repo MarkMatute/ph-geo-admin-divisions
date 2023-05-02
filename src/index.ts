@@ -48,7 +48,14 @@ export function searchProvince(params: SearchParams) {
 
 // search municipality
 export function searchMunicipality(params: SearchParams) {
-  const { name = null, regionId = null, provinceId = null, municipalityId = null } = params;
+  let { name = null, regionId = null, provinceId = null, municipalityId = null } = params;
+
+  // special handling for metro manila
+  if (provinceId === '000') {
+    provinceId = null;
+    regionId = '13';
+  }
+
   return _.filter(municipalities, (municipality: AdminRegion) => {
     let nameMatch = true;
     let regionIdMatch = true;
@@ -73,7 +80,14 @@ export function searchMunicipality(params: SearchParams) {
 
 // search baranggay
 export function searchBaranggay(params: SearchParams) {
-  const { name = null, regionId = null, provinceId = null, municipalityId = null, baranggayId = null } = params;
+  let { name = null, regionId = null, provinceId = null, municipalityId = null, baranggayId = null } = params;
+  // special handling for metro manila
+
+  if (provinceId === '000') {
+    provinceId = null;
+    regionId = '13';
+  }
+
   return _.filter(baranggays, (baranggay: AdminRegion) => {
     let nameMatch = true;
     let regionIdMatch = true;

@@ -93,6 +93,11 @@ interface SearchParams {
 ```
 check `test.spec.ts` for more usage.
 
+## Special Handling for NCR
+National Capital Region is manually added to the province list,
+catering for this special need to complete the flow of
+searching province, municipality then baranggay, this eliminates
+the process of searching Regions etc.
 
 <!-- LICENSE -->
 ## License
