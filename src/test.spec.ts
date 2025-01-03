@@ -8,13 +8,13 @@ import {
 describe('PH Geo Admin Divisions Search Test', () => {
   describe('when searching regions', () => {
     it('should return region when search by regionId', async () => {
-      const ilocosRegion =  searchRegion({
+      const ilocosRegion = searchRegion({
         regionId: '01'
       });
       expect(ilocosRegion).not.toBeNull();
     });
     it('should return region when searched by name', async () => {
-      const ilocosRegion =  searchRegion({
+      const ilocosRegion = searchRegion({
         name: 'iLocos'
       });
       expect(ilocosRegion).not.toBeNull();
@@ -49,19 +49,19 @@ describe('PH Geo Admin Divisions Search Test', () => {
   });
   describe('when searching municipalities', () => {
     it('should return municipalities under given province id', async () => {
-      const centralLuzonMunicipalities =  searchMunicipality({
+      const centralLuzonMunicipalities = searchMunicipality({
         provinceId: '014'
       });
       expect((centralLuzonMunicipalities as any).length).toEqual(24);
     });
     it('should return municipalities when searched using name', async () => {
-      const malolos =  searchMunicipality({
+      const malolos = searchMunicipality({
         name: 'malolo'
       });
       expect(malolos[0].name === 'La City of Malolos (Capital)');
     });
     it('should return municipalities when searched by name and with given province id', async () => {
-      const plaridel =  searchMunicipality({
+      const plaridel = searchMunicipality({
         name: 'Plarid',
         provinceId: '014'
       });
@@ -70,20 +70,20 @@ describe('PH Geo Admin Divisions Search Test', () => {
   });
   describe('when searching baranggays', () => {
     it('should return baranggays under given municipality id', async () => {
-      const allBaranggays =  searchBaranggay({
+      const allBaranggays = searchBaranggay({
         provinceId: '014',
         municipalityId: '10'
       });
       expect((allBaranggays as any).length).toEqual(51);
     });
     it('should return baranggays when searched using name', async () => {
-      const allBalayong =  searchBaranggay({
+      const allBalayong = searchBaranggay({
         name: 'balayong'
       });
       expect((allBalayong as any).length).toEqual(8);
     });
     it('should return baranggays when searched by name and with given municipality id', async () => {
-      const balayong =  searchBaranggay({
+      const balayong = searchBaranggay({
         name: 'balayong',
         municipalityId: '10'
       });
@@ -93,25 +93,23 @@ describe('PH Geo Admin Divisions Search Test', () => {
 
   describe('searching ncr in province', () => {
     it('should return ncr in province list', async () => {
-      const ncr =  searchProvince({
+      const ncr = searchProvince({
         name: 'NCR'
-      })
-      console.log(ncr);
+      });
       expect(ncr[0].name).toEqual('National Capital Region (NCR)');
     });
     it('should return municipalities under ncr', async () => {
-      const ncrMunicipalities =  searchMunicipality({
+      const ncrMunicipalities = searchMunicipality({
         provinceId: '000'
       });
       expect(ncrMunicipalities.length).toEqual(31);
     });
     it('should return baranggay under ncr', async () => {
-      const ermitaBaranggay =  searchBaranggay({
+      const ermitaBaranggay = searchBaranggay({
         provinceId: '000',
         municipalityId: '08'
       });
       expect(ermitaBaranggay.length).toEqual(13);
     });
   });
-
 });

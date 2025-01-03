@@ -15,4 +15,3 @@ export interface SearchParams {
   municipalityId?: string;
   baranggayId?: string;
 }
-
