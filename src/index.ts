@@ -9,9 +9,10 @@ export { regions } from './regions';
 export { provinces } from './provinces';
 export { municipalities } from './combined-municipalities';
 export { baranggays } from './baranggays';
+export { AdminRegion };
 
 // search regions
-export function searchRegion(params: SearchParams) {
+export function searchRegion(params: SearchParams): AdminRegion[] {
   const { name = null, regionId = null } = params;
   return regions.filter((region: AdminRegion) => {
     const nameMatch = name
@@ -23,7 +24,7 @@ export function searchRegion(params: SearchParams) {
 }
 
 // search provinces
-export function searchProvince(params: SearchParams) {
+export function searchProvince(params: SearchParams): AdminRegion[] {
   const { name = null, regionId = null, provinceId = null } = params;
   return provinces.filter((province: AdminRegion) => {
     const nameMatch = name
@@ -38,7 +39,7 @@ export function searchProvince(params: SearchParams) {
 }
 
 // search municipality
-export function searchMunicipality(params: SearchParams) {
+export function searchMunicipality(params: SearchParams): AdminRegion[] {
   const {
     name = null,
     regionId = null,
@@ -68,7 +69,7 @@ export function searchMunicipality(params: SearchParams) {
 }
 
 // search baranggay
-export function searchBaranggay(params: SearchParams) {
+export function searchBaranggay(params: SearchParams): AdminRegion[] {
   const {
     name = null,
     regionId = null,
